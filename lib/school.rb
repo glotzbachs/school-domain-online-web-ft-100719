@@ -25,8 +25,21 @@ attr_reader :name, :roster, :grade
   def grade(grade)
     @grade=@roster[grade]
   end
+
   
-  ##Original ideas.. before study group
+  def sort
+      # @roster.reduce({}) do |sorted, (grade,students)| 
+      #   sorted[grade]= students.sort
+      #   sorted
+      # end
+    @roster.transform_values{|students| students.sort}
+  end
+
+end
+
+
+  
+  ##Original ideas for sort.. before study group
   # def sort
   #   # binding.pry
   #   @roster.sort
@@ -34,14 +47,4 @@ attr_reader :name, :roster, :grade
   #     students.sort_by{|studenta,studentb| studenta<=>studentb}
   #     # .sort_by{|grade,student| student}
   #   }
-  # end
-  
-  def sort
-    # @roster.reduce({}) do |sorted, (grade,students)| 
-    #   sorted[grade]= students.sort
-    #   sorted
-    # end
-    @roster.transform_values{|students| students.sort}
-  end
-
-end
+  # end 
